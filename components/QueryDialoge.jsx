@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -11,8 +11,24 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { nameStyle, Randomness } from "@/helper/constant";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import { useQueryContext } from "@/context/BusinessNameContext";
 
 export const QueryDialoge = ({ open, setOpen }) => {
+  
+  const { query, updateQuery } = useQueryContext();
+
+  const handleNameStyle = (nameStyle) => {
+    updateQuery({ nameStyle });
+  };
+
+  const handleRandomness = (randomness) => {
+    updateQuery({ randomness });
+  };
+
+  const handleFormFields = (e) => {
+    updateQuery({ [e.target.name]: e.target.value });
+  };
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
@@ -45,7 +61,11 @@ export const QueryDialoge = ({ open, setOpen }) => {
             <h2 className="text-lg capitalize font-semibold mb-3">
               Select name style
             </h2>
-            <RadioGroup defaultValue="Auto" className="grid grid-cols-2 gap-4">
+            <RadioGroup
+              defaultValue="Auto"
+              onValueChange={handleNameStyle}
+              className="grid grid-cols-2 gap-4"
+            >
               {nameStyle.map((item) => (
                 <Label
                   htmlFor={`nameStyle${item.id}`}
@@ -70,7 +90,7 @@ export const QueryDialoge = ({ open, setOpen }) => {
             <h2 className="text-lg capitalize font-semibold mb-3">
               select randomness
             </h2>
-            <RadioGroup defaultValue="Auto">
+            <RadioGroup defaultValue="Medium" onValueChange={handleRandomness}>
               {Randomness.map((item) => (
                 <Label
                   htmlFor={`nameStyle${item.id}`}
@@ -97,11 +117,19 @@ export const QueryDialoge = ({ open, setOpen }) => {
             </h2>
             <div className="px-3 py-1 flex flex-col gap-2">
               <Label className="text-md">Keyword</Label>
-              <Input placeholder="Enter keyword" className="text-md " />
+              <Input
+                onChange={handleFormFields}
+                placeholder="Enter keyword"
+                name="keyword"
+                value={query?.keyword || ""}
+                className="text-md "
+              />
               <Label className="text-md">Description</Label>
               <textarea
+                onChange={handleFormFields}
                 placeholder="Enter description"
                 className="text-md border-[1px] border-gray-300 rounded px-2 py-1 h-24 resize-none outline-none focus:ring-[1px] focus:ring-black"
+                name="description"
               ></textarea>
               <Button className="text-md font-semibold mt-3">Generate</Button>
             </div>
