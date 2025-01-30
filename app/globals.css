@@ -76,3 +76,123 @@ body {
 #namesSection::-webkit-scrollbar{
   display: none;
 }
+
+/* =============================== */
+
+@keyframes dotScale1 {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5);
+    opacity: 0.3;
+  }
+}
+
+@keyframes dotScale2 {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5);
+    opacity: 0.3;
+  }
+}
+
+@keyframes dotScale3 {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5);
+    opacity: 0.3;
+  }
+}
+
+@keyframes dotScale4 {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5);
+    opacity: 0.3;
+  }
+}
+
+.animate-dotScale1 {
+  animation: dotScale1 1.2s ease-in-out infinite;
+}
+
+.animate-dotScale2 {
+  animation: dotScale2 1.2s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+.animate-dotScale3 {
+  animation: dotScale3 1.2s ease-in-out infinite;
+  animation-delay: 0.4s;
+}
+
+.animate-dotScale4 {
+  animation: dotScale4 1.2s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+/* ============================ */
+@keyframes statusAvailable {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes statusUnavailable {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-statusAvailable {
+  animation: statusAvailable 0.6s ease-out;
+}
+
+.animate-statusUnavailable {
+  animation: statusUnavailable 0.6s ease-out;
+}

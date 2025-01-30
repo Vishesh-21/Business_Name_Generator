@@ -1,4 +1,6 @@
 "use client";
+import { DomainStatus } from "@/components/DomainStatus";
+import DotLoader from "@/components/DotLoader";
 import { Sidebar } from "@/components/Sidebar";
 import { useQueryContext } from "@/context/BusinessNameContext";
 import { generatePrompt } from "@/helper/Function";
@@ -10,7 +12,9 @@ const BusinessName = () => {
   const [names, setNames] = useState([]);
   const [loading, setLoading] = useState(false);
   const [pages, setPages] = useState(1);
-  const [refresh,setRefresh] = useState(false);
+  const [refresh, setRefresh] = useState(false);
+  const [domainDialogueOpen, setDomainDialogueOpen] = useState(false);
+  const [domain, setDomain] = useState("");
 
   const observerDiv = useRef();
 
@@ -77,9 +81,19 @@ const BusinessName = () => {
       observer.observe(observerDiv.current);
     }
     return () => {
-      observer.unobserve(observerDiv);
+      if (observerDiv.current) {
+        observer.unobserve(observerDiv.current);
+      }
     };
   }, []);
+
+  //function to get the domain status
+  const getDomainStatus = (businessName) => {
+    const domain =
+      businessName.replace(/[^a-zA-Z0-9]/g, "").toLowerCase() + ".com";
+    setDomain(domain);
+    setDomainDialogueOpen(!domainDialogueOpen);
+  };
 
   return (
     <div className="px-20 text-white mb-8">
@@ -89,7 +103,7 @@ const BusinessName = () => {
 
       <div className="flex justify-center items-start gap-10 mt-8">
         <div className="w-[25%]">
-          <Sidebar setRefresh={setRefresh} refresh={refresh}/>
+          <Sidebar setRefresh={setRefresh} refresh={refresh} />
         </div>
         <div id="namesSection" className="w-[75%] h-[120vh] overflow-auto">
           <div className=" grid grid-cols-4 gap-5">
@@ -98,18 +112,22 @@ const BusinessName = () => {
               names.map((name, index) => (
                 <div
                   key={index}
+                  onClick={() => getDomainStatus(name)}
                   className="border border-gray-400 p-3 rounded-md font-bold cursor-pointer hover:bg-primary hover:text-black duration-300"
                 >
                   {name}
                 </div>
               ))}
           </div>
-          {loading && (
-            <div className="text-center text-lg text-primary mt-2">Loading...</div>
-          )}
+          {loading && <DotLoader />}
           <div ref={observerDiv} className="h-2"></div>
         </div>
       </div>
+      <DomainStatus
+        open={domainDialogueOpen}
+        setOpen={setDomainDialogueOpen}
+        domain={domain}
+      />
     </div>
   );
 };
