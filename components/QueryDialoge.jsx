@@ -12,10 +12,11 @@ import { nameStyle, Randomness } from "@/helper/constant";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { useQueryContext } from "@/context/BusinessNameContext";
+import { useRouter } from "next/navigation";
 
 export const QueryDialoge = ({ open, setOpen }) => {
-  
   const { query, updateQuery } = useQueryContext();
+  const router = useRouter();
 
   const handleNameStyle = (nameStyle) => {
     updateQuery({ nameStyle });
@@ -27,6 +28,10 @@ export const QueryDialoge = ({ open, setOpen }) => {
 
   const handleFormFields = (e) => {
     updateQuery({ [e.target.name]: e.target.value });
+  };
+
+  const handleGenerate = () => {
+    router.push("/business-name");
   };
 
   return (
@@ -93,13 +98,13 @@ export const QueryDialoge = ({ open, setOpen }) => {
             <RadioGroup defaultValue="Medium" onValueChange={handleRandomness}>
               {Randomness.map((item) => (
                 <Label
-                  htmlFor={`nameStyle${item.id}`}
-                  key={`nameStyle${item.id}`}
+                  htmlFor={`randomness${item.id}`}
+                  key={`randomness${item.id}`}
                   className="p-4 rounded border-[1px] border-primary flex gap-3 items-center hover:bg-slate-100 duration-300 cursor-pointer"
                 >
                   <RadioGroupItem
                     value={item.name}
-                    id={`nameStyle${item.id}`}
+                    id={`randomness${item.id}`}
                   />
                   <div>
                     <h1 className="text-md font-semibold">{item.name}</h1>
@@ -131,7 +136,12 @@ export const QueryDialoge = ({ open, setOpen }) => {
                 className="text-md border-[1px] border-gray-300 rounded px-2 py-1 h-24 resize-none outline-none focus:ring-[1px] focus:ring-black"
                 name="description"
               ></textarea>
-              <Button className="text-md font-semibold mt-3">Generate</Button>
+              <Button
+                onClick={handleGenerate}
+                className="text-md font-semibold mt-3"
+              >
+                Generate
+              </Button>
             </div>
           </TabsContent>
         </Tabs>

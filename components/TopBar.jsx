@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 
 export const TopBar = () => {
+
   return (
     <div className='w-full fixed top-0 left-0 bg-bodyColor flex justify-between px-40 py-6'>
         <Link href='/'>
