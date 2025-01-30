@@ -1,6 +1,8 @@
 import { TopBar } from "@/components/TopBar";
 import "./globals.css";
 import {Afacad_Flux} from 'next/font/google'
+import { Toaster } from "@/components/ui/toaster"
+import { BusinessNameContext } from "@/context/BusinessNameContext";
 
 const afacad = Afacad_Flux({
   subsets:['latin'],
@@ -17,8 +19,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${afacad.className}`}>
+      <BusinessNameContext>
       <TopBar/>
+      <Toaster />
       {children}
+      </BusinessNameContext>
       </body>
     </html>
   );

@@ -33,7 +33,7 @@ export const BottomBar = () => {
       <div className="fixed w-full bottom-0 left-0">
         <hr className="w-[77%] mt-5 mx-auto" />
         <footer className="text-white text-center text-gray-500">
-          All rights are reserved : {new Date().getFullYear()}{" "}
+        &copy; {new Date().getFullYear()}{" "} | All rights are reserved.
         </footer>
       </div>
     </>
