@@ -8,7 +8,7 @@ import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
-export const Sidebar = () => {
+export const Sidebar = ({setRefresh,refresh}) => {
   const { query, updateQuery } = useQueryContext();
 
   const handleNameStyle = (nameStyle) => {
@@ -24,7 +24,7 @@ export const Sidebar = () => {
   };
   
   const handleGenerate = () => {
-
+    setRefresh(!refresh);
   };
 
   return (
@@ -78,13 +78,13 @@ export const Sidebar = () => {
               onChange={handleFormFields}
               placeholder="Enter keyword"
               name="keyword"
-              value={query?.keyword}
+              value={query?.keyword ?? ""}
               className="text-md "
             />
             <Label className="text-md">Description</Label>
             <textarea
               onChange={handleFormFields}
-              value={query?.description}
+              value={query?.description ?? ""}
               placeholder="Enter description"
               className="text-md border-[1px] bg-transparent border-gray-300 rounded px-2 py-1 h-24 resize-none outline-none focus:ring-[1px] focus:ring-black"
               name="description"

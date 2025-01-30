@@ -72,3 +72,7 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+#namesSection::-webkit-scrollbar{
+  display: none;
+}
