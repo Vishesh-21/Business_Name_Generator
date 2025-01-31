@@ -135,6 +135,7 @@ export const QueryDialoge = ({ open, setOpen }) => {
                 placeholder="Enter description"
                 className="text-md border-[1px] border-gray-300 rounded px-2 py-1 h-24 resize-none outline-none focus:ring-[1px] focus:ring-black"
                 name="description"
+                value={query?.description}
               ></textarea>
               <Button
                 onClick={handleGenerate}

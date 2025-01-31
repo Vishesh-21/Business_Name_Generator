@@ -5,7 +5,7 @@ import React from 'react'
 
 export default function page(){
   return (
-    <div>
+    <div className='flex flex-col items-center justify-center md:px-40'>
       <HeroSection/>
       <Search/>
       <BottomBar/>

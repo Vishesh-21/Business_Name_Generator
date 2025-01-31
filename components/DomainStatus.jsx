@@ -50,23 +50,28 @@ export const DomainStatus = ({ open, setOpen, domain }) => {
             <p className="text-center">
               <DotLoader />
             </p>
-          ) : domainStatus && domainStatus === "AVAILABLE" ? (
-            <div
-              className="flex justify-center animate-statusAvailable"
-              style={{ opacity: domainStatus === "AVAILABLE" ? 1 : 0 }}
-            >
-              <span className="bg-green-500 text-xl px-10 py-2 rounded-md text-white">
-                {domainStatus}
-              </span>
-            </div>
           ) : (
-            <div
-              className="flex justify-center animate-statusUnavailable"
-              style={{ opacity: domainStatus === "UNAVAILABLE" ? 1 : 0 }}
-            >
-              <span className="bg-red-500 text-xl px-10 py-2 rounded-md text-white">
-                {domainStatus}
-              </span>
+            <div>
+              <p className="my-2 text-center">Domain Availability for <b>{domain}</b></p>
+              {domainStatus && domainStatus === "AVAILABLE" ? (
+                <div
+                  className="flex justify-center animate-statusAvailable"
+                  style={{ opacity: domainStatus === "AVAILABLE" ? 1 : 0 }}
+                >
+                  <span className="bg-green-500 text-xl px-10 py-2 rounded-md text-white">
+                    {domainStatus}
+                  </span>
+                </div>
+              ) : (
+                <div
+                  className="flex justify-center animate-statusUnavailable"
+                  style={{ opacity: domainStatus === "UNAVAILABLE" ? 1 : 0 }}
+                >
+                  <span className="bg-red-500 text-xl px-10 py-2 rounded-md text-white">
+                    {domainStatus}
+                  </span>
+                </div>
+              )}
             </div>
           )}
         </DialogHeader>

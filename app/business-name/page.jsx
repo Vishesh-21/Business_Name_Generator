@@ -96,17 +96,17 @@ const BusinessName = () => {
   };
 
   return (
-    <div className="px-20 text-white mb-8">
-      <h1 className="mt-24 text-center text-4xl font-semibold border-b pb-4">
+    <div className="md:px-20 px-4 text-white mb-8">
+      <h1 className="md:mt-20 mt-16 text-center text-2xl md:text-4xl font-semibold border-b pb-4">
         Business Name
       </h1>
 
-      <div className="flex justify-center items-start gap-10 mt-8">
-        <div className="w-[25%]">
+      <div className="flex md:flex-row flex-col justify-center md:items-start items-center gap-10 mt-8">
+        <div className="md:w-[25%] w-full">
           <Sidebar setRefresh={setRefresh} refresh={refresh} />
         </div>
-        <div id="namesSection" className="w-[75%] h-[120vh] overflow-auto">
-          <div className=" grid grid-cols-4 gap-5">
+        <div id="namesSection" className="md:w-[75%] h-[120vh] overflow-auto">
+          <div className="grid md:grid-cols-4 grid-cols-2 gap-5">
             {names &&
               names.length > 0 &&
               names.map((name, index) => (
