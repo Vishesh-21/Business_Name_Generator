@@ -12,6 +12,7 @@ Customizable Filters: Users can refine results based on industry, style, or keyw
 Tech Stack
 Frontend: Next.js, Tailwind CSS
 AI Integration: Google Gemini AI
+Hoisting : https://business-name-generator-bay.vercel.app/
 
 Installation & Setup
 
