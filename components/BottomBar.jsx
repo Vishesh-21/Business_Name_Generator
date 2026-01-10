@@ -25,7 +25,7 @@ const data = [
 export const BottomBar = () => {
   return (
     <>
-      <div className="flex flex-col px-10 md:px-0 md:flex-row justify-between md:gap-10 gap-4 mt-12 text-white">
+      <div className="flex gap-8 px-16 md:mt-10 text-white">
         {/* cards  */}
         {data.map((item, index) => (
           <Card
@@ -36,24 +36,18 @@ export const BottomBar = () => {
           />
         ))}
       </div>
-      <div className="w-full md:fixed bottom-0">
-        <hr className="md:w-[100%] mt-5 mx-auto" />
-        <footer className="text-white text-center text-gray-500">
-          <h1 className="mt-3">
-            &copy; {new Date().getFullYear()} | All rights are reserved.
-          </h1>
-        </footer>
-      </div>
     </>
   );
 };
 
+
+
 function Card({ title, description, icon }) {
   return (
-    <div className="flex flex-col gap-2 md:items-center px-4 py-4 rounded-md border-[1px]  bg-primary/20 border-primary transition-all duration-300">
+    <div className="flex flex-col gap-2 md:items-center px-4 py-4 rounded-md border-[1px]  bg-primary/5 border-primary transition-all duration-300 hover:shadow-lg showdow-primary">
       {icon}
       <h1 className="font-semibold text-medium">{title}</h1>
-      <p className="md:text-center text-left text-base">{description}</p>
+      <p className="md:text-center text-left text-base/5 text-gray-300">{description}</p>
     </div>
   );
 }

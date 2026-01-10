@@ -21,8 +21,10 @@ const BusinessName = () => {
   const fetchBusinessNames = async () => {
     try {
       setLoading(true);
-      const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_API_KEY);
-      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+      const genAI = new GoogleGenerativeAI(
+        process.env.NEXT_PUBLIC_GEMINI_API_KEY
+      );
+      const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
       const inputs = { ...query, names };
       const prompt = generatePrompt(inputs);
@@ -96,12 +98,8 @@ const BusinessName = () => {
   };
 
   return (
-    <div className="md:px-20 px-4 text-white mb-8">
-      <h1 className="md:mt-20 mt-16 text-center text-2xl md:text-4xl font-semibold border-b pb-4">
-        Business Name
-      </h1>
-
-      <div className="flex md:flex-row flex-col justify-center md:items-start items-center gap-10 mt-8">
+    <div className=" text-white mb-8 py-10">
+      <div className="flex md:flex-row flex-col justify-center md:items-start items-center gap-10 mt-8 border-t border-gray-300/60 py-6">
         <div className="md:w-[25%] w-full">
           <Sidebar setRefresh={setRefresh} refresh={refresh} />
         </div>
