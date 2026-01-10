@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import {
   Dialog,
@@ -14,9 +16,11 @@ import { Button } from "./ui/button";
 import { useQueryContext } from "@/context/BusinessNameContext";
 import { useRouter } from "next/navigation";
 import { toast } from "@/hooks/use-toast";
+import { Loader2 } from "lucide-react";
 
 export const QueryDialoge = ({ open, setOpen }) => {
   const { query, updateQuery } = useQueryContext();
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleNameStyle = (nameStyle) => {
@@ -40,13 +44,16 @@ export const QueryDialoge = ({ open, setOpen }) => {
       });
       return;
     }
+    setLoading(true);
     router.push("/business-name");
   };
 
   return (
     <Dialog open={open} onOpenChange={setOpen} className="bg-black">
       <DialogContent>
-        <DialogHeader></DialogHeader>
+        <DialogHeader>
+          <DialogTitle>Generate Business Names</DialogTitle>
+        </DialogHeader>
         {/* tabs sections  */}
         <Tabs defaultValue="nameStyle">
           <TabsList className="p-0 gap-1">
@@ -137,6 +144,7 @@ export const QueryDialoge = ({ open, setOpen }) => {
                 onChange={handleFormFields}
                 placeholder="Enter keyword"
                 name="keyword"
+                value={query?.keyword}
                 required
                 className="text-md"
               />
@@ -150,9 +158,16 @@ export const QueryDialoge = ({ open, setOpen }) => {
               ></textarea>
               <Button
                 onClick={handleGenerate}
-                className="text-md font-semibold mt-3"
+                className="text-md font-semibold mt-3 flex "
+                disabled={loading}
               >
-                Generate
+                {loading ? (
+                  <p className="flex items-center gap-1 ">
+                    <Loader2 className="h-4 w-4 animate-spin" /> Generating...
+                  </p>
+                ) : (
+                  "Generate"
+                )}
               </Button>
             </div>
           </TabsContent>

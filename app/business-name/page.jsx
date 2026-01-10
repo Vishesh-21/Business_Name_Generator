@@ -9,7 +9,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 const BusinessName = () => {
   const { query, updateQuery } = useQueryContext();
-  const [names, setNames] = useState( randomNames);
+  const [names, setNames] = useState(randomNames);
   const [loading, setLoading] = useState(false);
   const [pages, setPages] = useState(1);
   const [refresh, setRefresh] = useState(false);
@@ -19,52 +19,52 @@ const BusinessName = () => {
 
   const observerDiv = useRef();
 
-  // const fetchBusinessNames = async () => {
-  //   try {
-  //     setLoading(true);
-  //     const genAI = new GoogleGenerativeAI(
-  //       process.env.NEXT_PUBLIC_GEMINI_API_KEY
-  //     );
-  //     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+  const fetchBusinessNames = async () => {
+    try {
+      setLoading(true);
+      const genAI = new GoogleGenerativeAI(
+        process.env.NEXT_PUBLIC_GEMINI_API_KEY
+      );
+      const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
-  //     const inputs = { ...query, names };
-  //     const prompt = generatePrompt(inputs);
+      const inputs = { ...query, names };
+      const prompt = generatePrompt(inputs);
 
-  //     const result = await model.generateContent(prompt);
+      const result = await model.generateContent(prompt);
 
-  //     // Extract text from response
-  //     const textResponse = result.response.candidates[0].content.parts[0].text;
+      // Extract text from response
+      const textResponse = result.response.candidates[0].content.parts[0].text;
 
-  //     // Use a regex to extract only the JSON content
-  //     const jsonMatch = textResponse.match(/```json\n([\s\S]+?)\n```/);
+      // Use a regex to extract only the JSON content
+      const jsonMatch = textResponse.match(/```json\n([\s\S]+?)\n```/);
 
-  //     if (!jsonMatch) {
-  //       console.error("Error: No valid JSON found in the response.");
-  //       return;
-  //     }
+      if (!jsonMatch) {
+        console.error("Error: No valid JSON found in the response.");
+        return;
+      }
 
-  //     const jsonString = jsonMatch[1].trim(); // Extracted JSON content
+      const jsonString = jsonMatch[1].trim(); // Extracted JSON content
 
-  //     // Parse JSON safely
-  //     const jsonData = JSON.parse(jsonString);
-  //     if (jsonData && Array.isArray(jsonData.names)) {
-  //       setNames((prevNames) => [...prevNames, ...jsonData.names]);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching business names:", error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+      // Parse JSON safely
+      const jsonData = JSON.parse(jsonString);
+      if (jsonData && Array.isArray(jsonData.names)) {
+        setNames((prevNames) => [...prevNames, ...jsonData.names]);
+      }
+    } catch (error) {
+      console.error("Error fetching business names:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  // useEffect(() => {
-  //   fetchBusinessNames();
-  // }, [pages]);
+  useEffect(() => {
+    fetchBusinessNames();
+  }, [pages]);
 
-  // useEffect(() => {
-  //   setNames([]);
-  //   fetchBusinessNames();
-  // }, [refresh]);
+  useEffect(() => {
+    setNames([]);
+    fetchBusinessNames();
+  }, [refresh]);
 
   const handleIntersection = (enteries) => {
     const entry = enteries[0];

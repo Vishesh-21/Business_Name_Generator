@@ -53,6 +53,7 @@ export const DomainStatus = ({ open, setOpen, domain, name }) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
+        <DialogTitle></DialogTitle>
         <DialogHeader>
           <DialogTitle className="text-4xl font-semibold text-center mb-3">
             {domain}

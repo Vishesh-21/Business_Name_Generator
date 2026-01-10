@@ -31,7 +31,7 @@ export const BottomBar = () => {
     <section className="w-full py-14 space-y-10">
       <div className="text-center">
         <h1 className="text-3xl text-primary font-semibold">How It Works</h1>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-muted-foreground md:max-w-2xl w-[90%] mx-auto">
           Generate unique and creative business name ideas with our AI-powered
           business name generator. Get instant results based on your industry,
           style, and keywords.
@@ -55,7 +55,7 @@ function FeatureCard({ title, description, icon: Icon, className }) {
   return (
     <Card
       className={cn(
-        "group relative overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-sm hover:shadow-primary/40",
+        "group relative overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/40",
         className
       )}
     >

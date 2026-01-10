@@ -15,7 +15,7 @@ const HeroSection = () => {
   return (
     <div className="w-full text-white justify-center flex flex-col items-center gap-10 h-[85vh] relative">
       <div className="relative space-y-3">
-        <span className="absolute text-primary top-0 right-40 text-2xl ">
+        <span className="absolute md:block hidden text-primary top-0 right-40 text-2xl ">
           *
         </span>
         <h1 className="text-3xl sm:text-6xl font-semibold text-center bg-gradient-to-r from-primary via-red-400 to-purple-500 text-transparent bg-clip-text">
@@ -33,12 +33,25 @@ const HeroSection = () => {
         </p>
       </div>
 
-      <Button
-        className="rounded-full text-xl px-14 font-bold"
-        onClick={showQueryModel}
-      >
-        Get Started
-      </Button>
+     <Button
+  onClick={showQueryModel}
+  className="
+    relative rounded-full px-14 py-6 text-lg font-semibold
+    bg-white/10 text-primary backdrop-blur-md
+    border border-white/20
+    shadow-[0_0_30px_hsl(var(--primary)/0.15)]
+    transition-all duration-300
+    hover:bg-white/15
+    hover:shadow-[0_0_45px_hsl(var(--primary)/0.35)]
+    hover:-translate-y-0.5
+    focus-visible:outline-none
+    focus-visible:ring-2
+    focus-visible:ring-primary
+    focus-visible:ring-offset-2
+  "
+>
+  <span className="relative z-10">Get Started</span>
+</Button>
 
       <div className="w-[200px] h-[2px] rounded-full bg-gradient-to-r from-transparent via-primary to-transparent absolute bottom-0"></div>
 
