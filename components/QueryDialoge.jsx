@@ -13,6 +13,7 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { useQueryContext } from "@/context/BusinessNameContext";
 import { useRouter } from "next/navigation";
+import { toast } from "@/hooks/use-toast";
 
 export const QueryDialoge = ({ open, setOpen }) => {
   const { query, updateQuery } = useQueryContext();
@@ -31,6 +32,14 @@ export const QueryDialoge = ({ open, setOpen }) => {
   };
 
   const handleGenerate = () => {
+    if (!query.keyword) {
+      toast({
+        title: "Keyword is required",
+        description: "Please enter a keyword to generate business names.",
+        variant: "destructive",
+      });
+      return;
+    }
     router.push("/business-name");
   };
 
@@ -128,7 +137,7 @@ export const QueryDialoge = ({ open, setOpen }) => {
                 onChange={handleFormFields}
                 placeholder="Enter keyword"
                 name="keyword"
-                value={query?.keyword || ""}
+                required
                 className="text-md"
               />
               <Label className="text-md">Description</Label>

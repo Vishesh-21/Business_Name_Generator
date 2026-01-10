@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
+import { toast } from "@/hooks/use-toast";
 
 export default function Page() {
   const [savedNames, setSavedNames] = useState([]);
@@ -19,6 +20,11 @@ export default function Page() {
     const updatedNames = savedNames.filter((n) => n !== name);
     setSavedNames(updatedNames);
     localStorage.setItem("savedNames", JSON.stringify(updatedNames));
+    toast({
+      title: `${name} removed!`,
+      description: `${name} has been removed from your saved names.`,
+      variant: "success",
+    });
   };
 
   return (
