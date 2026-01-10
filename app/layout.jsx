@@ -20,12 +20,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${afacad.className} min-h-screen relative max-w-5xl mx-auto dark`}>
+      <body className={`${afacad.className} min-h-screen relative max-w-6xl mx-auto dark`}>
         <BusinessNameContext>
+          
           <NavBar />
           <Toaster />
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </BusinessNameContext>
       </body>
     </html>

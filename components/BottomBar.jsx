@@ -1,5 +1,6 @@
 import React from "react";
 import { Filter, Heart, Lightbulb } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const data = [
   {
@@ -24,30 +25,44 @@ const data = [
 
 export const BottomBar = () => {
   return (
-    <>
-      <div className="flex gap-8 px-16 py-8 md:mt-10 text-white">
+    <div className="mb-10 p-10 space-y-16">
+      <div className="flex items-center gap-16">
         {/* cards  */}
-        {data.map((item, index) => (
-          <Card
-            key={index}
-            title={item.title}
-            description={item.description}
-            icon={item.icon}
-          />
-        ))}
+        <Card
+          title={data[0].title}
+          description={data[0].description}
+          icon={data[0].icon}
+        />
+
+        <Card
+          title={data[1].title}
+          description={data[1].description}
+          icon={data[1].icon}
+        />
       </div>
-    </>
+      <Card
+        title={data[2].title}
+        description={data[2].description}
+        icon={data[2].icon}
+        className="max-w-xl mx-auto"
+      />
+    </div>
   );
 };
 
-
-
-function Card({ title, description, icon }) {
+function Card({ title, description, icon, className }) {
   return (
-    <div className="flex flex-col gap-2 md:items-center px-4 py-4 rounded-md border-[1px]  bg-primary/5 border-primary transition-all duration-300 hover:shadow-lg showdow-primary">
+    <div
+      className={cn(
+        "flex flex-col gap-2 md:items-center px-10 py-14 rounded-md border-[1px]  bg-primary/5 border-primary transition-all duration-300 hover:shadow-lg showdow-primary",
+        className
+      )}
+    >
       {icon}
       <h1 className="font-semibold text-medium">{title}</h1>
-      <p className="md:text-center text-left text-base/5 text-gray-300">{description}</p>
+      <p className="md:text-center text-left text-base/5 text-gray-300">
+        {description}
+      </p>
     </div>
   );
 }
