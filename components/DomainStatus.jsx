@@ -8,35 +8,41 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import DotLoader from "./DotLoader";
+import { Button } from "./ui/button";
+import { getStatus } from "@/helper/Function";
+import { Loader2 } from "lucide-react";
 
-export const DomainStatus = ({ open, setOpen, domain }) => {
+export const DomainStatus = ({
+  open,
+  setOpen,
+  domain,
+  name,
+}) => {
   const [loading, setLoading] = useState(false);
   const [domainStatus, setDomainStatus] = useState("");
-  const url = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=${process.env.NEXT_PUBLIC_API_KEY_2}&domainName=${domain}&credits=DA`;
+  const [isSaved, setIsSaved] = useState(false);
+
+  //function to save name into local storage
+  function saveName() {
+    const savedNames = JSON.parse(localStorage.getItem("savedNames")) || [];
+
+    if (savedNames.includes(name)) {
+      // Unsave
+      const updatedNames = savedNames.filter((n) => n !== name);
+      localStorage.setItem("savedNames", JSON.stringify(updatedNames));
+      setIsSaved(false);
+    } else {
+      // Save
+      savedNames.push(name);
+      localStorage.setItem("savedNames", JSON.stringify(savedNames));
+      setIsSaved(true);
+    }
+  }
 
   useEffect(() => {
-    const getStatus = async () => {
-      if (domain) {
-        try {
-          setLoading(true);
-          const response = await fetch(url);
-          if (!response.ok) {
-            throw new Error(response.statusText);
-          }
-          const data = await response.json();
-          const status = data.DomainInfo.domainAvailability;
-          setDomainStatus(status);
-        } catch (error) {
-          console.log(error);
-        } finally {
-          setLoading(false);
-        }
-      }
-    };
-    getStatus();
-  }, [domain]);
-
-  console.log(domainStatus);
+    const savedNames = JSON.parse(localStorage.getItem("savedNames")) || [];
+    setIsSaved(savedNames.includes(name));
+  }, [name]);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -45,35 +51,31 @@ export const DomainStatus = ({ open, setOpen, domain }) => {
           <DialogTitle className="text-4xl font-semibold text-center mb-3">
             {domain}
           </DialogTitle>
-          <DialogDescription></DialogDescription>
-          {loading ? (
-            <p className="text-center">
-              <DotLoader />
-            </p>
-          ) : (
-            <div>
-              <p className="my-2 text-center">Domain Availability for <b>{domain}</b></p>
-              {domainStatus && domainStatus === "AVAILABLE" ? (
-                <div
-                  className="flex justify-center animate-statusAvailable"
-                  style={{ opacity: domainStatus === "AVAILABLE" ? 1 : 0 }}
-                >
-                  <span className="bg-green-500 text-xl px-10 py-2 rounded-md text-white">
-                    {domainStatus}
-                  </span>
-                </div>
+          <DialogDescription className="text-center flex gap-2">
+            <Button
+              onClick={saveName}
+              className="w-1/2"
+              variant={isSaved ? "destructive" : "default"}
+            >
+              {isSaved ? "Unsave" : "Save"}
+            </Button>
+            <Button
+              className="w-1/2"
+              onClick={() => {
+                getStatus(domain, setLoading, setDomainStatus);
+              }}
+            >
+              {loading ? (
+                <p className="flex items-center gap-1">
+                  <Loader2 className="animate-spin h-4 w-4"/> Checking...
+                </p>
+              ) : domainStatus ? (
+                `Status: ${domainStatus}`
               ) : (
-                <div
-                  className="flex justify-center animate-statusUnavailable"
-                  style={{ opacity: domainStatus === "UNAVAILABLE" ? 1 : 0 }}
-                >
-                  <span className="bg-red-500 text-xl px-10 py-2 rounded-md text-white">
-                    {domainStatus}
-                  </span>
-                </div>
+                "Check Status"
               )}
-            </div>
-          )}
+            </Button>
+          </DialogDescription>
         </DialogHeader>
       </DialogContent>
     </Dialog>

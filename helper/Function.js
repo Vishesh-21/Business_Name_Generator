@@ -1,12 +1,13 @@
 export const generatePrompt = (inputs) => {
-    const prompt = `Hey gemini! i need your help in generating business name. i have name style, randomness and brand info so use these information to generate business name.
+  const prompt = `Hey gemini! i need your help in generating business name. i have name style, randomness and brand info so use these information to generate business name.
   
   here are inputs: 
   
   -Name Style: ${inputs?.nameStyle || "Auto"}
   -Randomness: ${inputs?.randomness || "Low"}
-  -Brand Info: keyword: ${inputs?.keyword || "Coding"} & description:  ${inputs?.description || "A Coding YouTube Channel"
-        }
+  -Brand Info: keyword: ${inputs?.keyword || "Coding"} & description:  ${
+    inputs?.description || "A Coding YouTube Channel"
+  }
   
   ### Requirements:
   - Provide 20 unique business names based on the inputs.
@@ -60,5 +61,87 @@ export const generatePrompt = (inputs) => {
   
   `;
 
-    return prompt;
+  return prompt;
 };
+
+//function to check domain availability
+
+// to get the url
+function getDomainUrl(domain) {
+  return `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=${process.env.NEXT_PUBLIC_API_KEY_2}&domainName=${domain}&credits=DA`;
+}
+
+export const getStatus = async (domain, setLoading, setDomainStatus) => {
+  if (domain) {
+    try {
+      const url = getDomainUrl(domain);
+      setLoading(true);
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      const data = await response.json();
+      const status = data.DomainInfo.domainAvailability;
+      setDomainStatus(status);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+};
+
+
+export const randomNames = [
+  "Aurora",
+  "Bloomstar",
+  "Celestia",
+  "Dazzle",
+  "Elysium",
+  "Floraison",
+  "Glimmer",
+  "Havenstone",
+  "Illuminaria",
+  "Jubilant",
+  "Kaleidoscope",
+  "Luminaria",
+  "Mysticore",
+  "Nebulon",
+  "Oasis",
+  "Papillon",
+  "Quintessence",
+  "Radiance",
+  "Spectra",
+  "Tranquility",
+  "Umbra",
+  "Vespera",
+  "Wisteria",
+  "Xanadu",
+  "Ylang",
+  "Zephyrine",
+  "Aethereia",
+  "Calliope",
+  "Dulcetone",
+  "Euphoria",
+  "Fluxion",
+  "Gallima",
+  "Helianthus",
+  "Imaginia",
+  "Jasminea",
+  "Korvus",
+  "Lunaria",
+  "Melliflora",
+  "Nimue",
+  "Opheliana",
+  "Pulsaria",
+  "Quinella",
+  "Radiancia",
+  "Soleiluna",
+  "Terraflora",
+  "Umbraxia",
+  "Velvetia",
+  "Waverley",
+  "Xanthoria",
+  "Yolanda",
+  "Zinnia"
+];

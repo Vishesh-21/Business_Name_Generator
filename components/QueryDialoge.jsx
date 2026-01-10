@@ -35,54 +35,52 @@ export const QueryDialoge = ({ open, setOpen }) => {
   };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={setOpen} className="bg-black">
       <DialogContent>
-        <DialogHeader>
-          <DialogTitle></DialogTitle>
-        </DialogHeader>
+        <DialogHeader></DialogHeader>
         {/* tabs sections  */}
         <Tabs defaultValue="nameStyle">
-          <TabsList className="p-0 bg-transparent gap-5">
+          <TabsList className="p-0 gap-1">
             <TabsTrigger
-              className="text-md data-[state=active]:bg-primary"
+              className="text-md data-[state=active]:bg-primary data-[state=active]:text-black data-[state=active]:font-bold"
               value="nameStyle"
             >
               Name Styles
             </TabsTrigger>
             <TabsTrigger
-              className="text-md data-[state=active]:bg-primary"
+              className="text-md data-[state=active]:bg-primary data-[state=active]:text-black data-[state=active]:font-bold"
               value="randomness"
             >
               Randomness
             </TabsTrigger>
             <TabsTrigger
-              className="text-md data-[state=active]:bg-primary"
+              className="text-md data-[state=active]:bg-primary data-[state=active]:text-black data-[state=active]:font-bold"
               value="brandInfo"
             >
               Brand Info
             </TabsTrigger>
           </TabsList>
           <TabsContent value="nameStyle">
-            <h2 className="text-lg capitalize font-semibold mb-3">
+            <h2 className="text-lg capitalize font-semibold mt-6 mb-3">
               Select name style
             </h2>
             <RadioGroup
               defaultValue="Auto"
               onValueChange={handleNameStyle}
-              className="grid grid-cols-2 gap-4"
+              className="grid grid-cols-2 gap-4 px-1"
             >
               {nameStyle.map((item) => (
                 <Label
                   htmlFor={`nameStyle${item.id}`}
                   key={`nameStyle${item.id}`}
-                  className="p-4 rounded border-[1px] border-primary flex gap-3 items-center hover:bg-slate-100 duration-300 cursor-pointer"
+                  className="p-4 rounded border flex gap-3 items-center duration-300 cursor-pointer"
                 >
                   <RadioGroupItem
                     value={item.name}
                     id={`nameStyle${item.id}`}
                   />
                   <div>
-                    <h1 className="text-md font-semibold">{item.name}</h1>
+                    <h1 className="text-md tracking-wide">{item.name}</h1>
                     <p className="whitespace-nowrap text-sm opacity-70">
                       {item.description}
                     </p>
@@ -92,22 +90,26 @@ export const QueryDialoge = ({ open, setOpen }) => {
             </RadioGroup>
           </TabsContent>
           <TabsContent value="randomness">
-            <h2 className="text-lg capitalize font-semibold mb-3">
+            <h2 className="text-lg capitalize font-semibold mb-3 mt-6">
               select randomness
             </h2>
-            <RadioGroup defaultValue="Medium" onValueChange={handleRandomness}>
+            <RadioGroup
+              defaultValue="Medium"
+              onValueChange={handleRandomness}
+              className="px-1"
+            >
               {Randomness.map((item) => (
                 <Label
                   htmlFor={`randomness${item.id}`}
                   key={`randomness${item.id}`}
-                  className="p-4 rounded border-[1px] border-primary flex gap-3 items-center hover:bg-slate-100 duration-300 cursor-pointer"
+                  className="p-4 rounded border flex gap-3 items-center cursor-pointer"
                 >
                   <RadioGroupItem
                     value={item.name}
                     id={`randomness${item.id}`}
                   />
                   <div>
-                    <h1 className="text-md font-semibold">{item.name}</h1>
+                    <h1 className="text-md tracking-wide">{item.name}</h1>
                     <p className="whitespace-nowrap text-sm opacity-70">
                       {item.description}
                     </p>
@@ -117,23 +119,23 @@ export const QueryDialoge = ({ open, setOpen }) => {
             </RadioGroup>
           </TabsContent>
           <TabsContent value="brandInfo">
-            <h2 className="text-lg capitalize font-semibold">
+            <h2 className="text-lg capitalize font-semibold mt-6 mb-3">
               Brand Information
             </h2>
-            <div className="px-3 py-1 flex flex-col gap-2">
+            <div className="px-1 flex flex-col gap-2">
               <Label className="text-md">Keyword</Label>
               <Input
                 onChange={handleFormFields}
                 placeholder="Enter keyword"
                 name="keyword"
                 value={query?.keyword || ""}
-                className="text-md "
+                className="text-md"
               />
               <Label className="text-md">Description</Label>
               <textarea
                 onChange={handleFormFields}
                 placeholder="Enter description"
-                className="text-md border-[1px] border-gray-300 rounded px-2 py-1 h-24 resize-none outline-none focus:ring-[1px] focus:ring-black"
+                className="text-md border rounded px-2 py-1 h-24 resize-none outline-none focus:ring-[1px] focus:ring-black bg-transparent"
                 name="description"
                 value={query?.description}
               ></textarea>

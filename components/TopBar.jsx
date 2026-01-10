@@ -5,7 +5,7 @@ import React from "react";
 
 export const NavBar = () => {
   return (
-    <div className="absolute w-full top-0 left-0 flex justify-between py-2 md:py-3 z-10 ">
+    <div className="sticky top-0 left-0 flex justify-between py-2 md:py-3 z-10 backdrop-blur-lg  px-4 md:px-0 items-center border-b border-gray-300/60 ">
       <Link href="/" className="flex gap-1 items-center justify-start">
         <Image
           src="/logo-2.png"

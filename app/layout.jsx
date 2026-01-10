@@ -20,13 +20,22 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${afacad.className} relative max-w-5xl mx-auto`}>
+      <body className={`${afacad.className} min-h-screen relative max-w-5xl mx-auto dark`}>
         <BusinessNameContext>
           <NavBar />
           <Toaster />
           {children}
+          <Footer />
         </BusinessNameContext>
       </body>
     </html>
   );
 }
+
+const Footer = () => {
+  return (
+    <div className="absolute w-full text-center  -bottom-0 text-gray-400 py-4 border-t-[1px] text-sm border-gray-400/50 ">
+      &copy; {new Date().getFullYear()} | All rights are reserved.
+    </div>
+  );
+};

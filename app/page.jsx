@@ -5,19 +5,10 @@ import React from "react";
 
 export default function page() {
   return (
-    <div className="flex flex-col items-center justify-center mx-auto relative  min-h-screen">
+    <div className="flex flex-col items-center justify-center mx-auto relative md:py-16">
       <HeroSection />
       <Search />
       <BottomBar />
-      <Footer />
     </div>
   );
 }
-
-const Footer = () => {
-  return (
-    <div className="absolute w-full text-center  -bottom-0 text-gray-400 py-4 border-t-[1px] text-sm border-gray-400/50 ">
-      &copy; {new Date().getFullYear()} | All rights are reserved.
-    </div>
-  );
-};

@@ -25,7 +25,7 @@ const data = [
 export const BottomBar = () => {
   return (
     <>
-      <div className="flex gap-8 px-16 md:mt-10 text-white">
+      <div className="flex gap-8 px-16 py-8 md:mt-10 text-white">
         {/* cards  */}
         {data.map((item, index) => (
           <Card
