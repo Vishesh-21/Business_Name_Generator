@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { QueryDialoge } from "./QueryDialoge";
+import { MoveRightIcon } from "lucide-react";
 
 const HeroSection = () => {
   const [open, setOpen] = useState(false);
@@ -12,9 +13,9 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="w-full text-white justify-center flex flex-col items-center gap-10 h-[85vh] ">
+    <div className="w-full text-white justify-center flex flex-col items-center gap-10 h-[85vh] relative">
       <div className="relative space-y-3">
-        <span className="absolute text-primary -top-2 right-40 text-2xl ">
+        <span className="absolute text-primary top-0 right-40 text-2xl ">
           *
         </span>
         <h1 className="text-3xl sm:text-6xl font-semibold text-center bg-gradient-to-r from-primary via-red-400 to-purple-500 text-transparent bg-clip-text">
@@ -33,13 +34,13 @@ const HeroSection = () => {
       </div>
 
       <Button
-        className="rounded-full text-xl font-bold"
+        className="rounded-full text-xl px-14 font-bold"
         onClick={showQueryModel}
       >
         Get Started
       </Button>
 
-      <div className="w-[200px] h-[1px] rounded-full bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+      <div className="w-[200px] h-[2px] rounded-full bg-gradient-to-r from-transparent via-primary to-transparent absolute bottom-0"></div>
 
       <QueryDialoge open={open} setOpen={setOpen} />
     </div>

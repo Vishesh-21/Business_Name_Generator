@@ -28,8 +28,8 @@ export default function Page() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto mt-10 px-4">
-      <Card className="shadow-sm bg-transparent">
+    <div className="max-w-2xl mx-auto my-10  px-4">
+      <Card className="shadow-sm bg-black/50">
         <CardHeader>
           <CardTitle className="text-xl flex justify-between items-center font-semibold">
             <h1>Saved Names</h1>

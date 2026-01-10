@@ -100,7 +100,7 @@ const BusinessName = () => {
   };
 
   return (
-    <div className=" text-white mb-8">
+    <div className=" text-white mb-8 bg-black/10">
       <div className="flex md:flex-row flex-col justify-center md:items-start items-center gap-10 py-10 border-gray-300/60">
         <div className="md:w-[25%] w-full">
           <Sidebar setRefresh={setRefresh} refresh={refresh} />
