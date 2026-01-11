@@ -1,49 +1,56 @@
-Business Name Generator
+<div align="center">
+  <img src="/public/logo-2.png" alt="logo" width="100" />
+  <h1>BizGen</h1>
+  <b>AI-powered business name generator</b>
+</div>
 
-Overview
-The Business Name Generator is a web application that helps users generate creative and unique business names using AI, such as Google Gemini AI. It also allows users to check the availability of .com domain names for their chosen business name.
+## ✨ Features
 
-Features
-AI-Powered Name Generation: Generate unique and catchy business names based on user input.
-Domain Availability Check: Instantly verify if the .com domain for a generated business name is available.
-User-Friendly Interface: Simple and intuitive UI for seamless user experience.
-Customizable Filters: Users can refine results based on industry, style, or keywords.
+- **AI-powered name generation**: Leverages the power of AI to generate unique and creative business names based on your business description and keywords.
+- **Domain availability check**: Instantly check the availability of the generated names with popular TLDs like .com, .net, .org, and more.
+- **Save favorite names**: Save your favorite names for later and keep them organized in one place.
+- **Modern and responsive UI**: A sleek and modern user interface that works seamlessly on all devices.
 
-Tech Stack
-Frontend: Next.js, Tailwind CSS
-AI Integration: Google Gemini AI
+## 🚀 Getting Started
 
-Installation & Setup
+### Prerequisites
 
-Clone the repository:
-git clone https://github.com/yourusername/business-name-generator.git
-cd business-name-generator
+- [Node.js](https://nodejs.org/en/) (v18.x or later)
+- [npm](https://www.npmjs.com/)
 
-Install dependencies:
-npm install
+### Installation
 
-Set up environment variables:
-Create a .env file in the root directory and add the following:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Vishesh-21/Business_Name_Generator
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd business_name_generator
+   ```
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
 
-NEXT_PUBLIC_AI_API_KEY=your_google_gemini_api_key
-NEXT_PUBLIC_BACKEND_URL=your_backend_url
+### Usage
 
-Run the project:
-npm run dev
-The app should now be running at http://localhost:3000
+1. Start the development server:
+   ```bash
+   npm run dev
+   ```
+2. Open your browser and navigate to `http://localhost:3000`.
 
-Usage
-Enter keywords or a brief description of your business idea.
-Select preferences like industry and name style.
-Click the "Generate" button to get AI-powered business name suggestions.
-Check the .com domain availability for each suggested name.
+## 🛠️ Built With
 
-Contributions
-Contributions are welcome! Feel free to open an issue or submit a pull request.
+- [Next.js](https://nextjs.org/) - React framework for building server-side rendered and static web applications.
+- [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework for rapid UI development.
+- [Google Generative AI](https://ai.google.dev/) - AI models for generating creative business names.
 
-License
-This project is licensed under the MIT License.
+## 🤝 Contributing
 
-Contact
-For any queries, reach out to visheshbaund@gmail.com.
+Contributions are welcome! Please feel free to submit a pull request or open an issue if you find a bug or have a feature request.
 
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
