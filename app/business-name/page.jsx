@@ -113,9 +113,10 @@ const BusinessName = () => {
                 <div
                   key={index}
                   onClick={() => getDomainStatus(name)}
-                  className="border p-3 rounded-md tracking-wide cursor-pointer hover:bg-primary hover:font-bold hover:text-black duration-300"
+                  className="border p-3 rounded-md tracking-wide cursor-pointer hover:bg-primary hover:font-bold hover:text-black duration-300 relative"
                 >
                   {name}
+                  <div className="absolute h-[1px] w-1/2 top-0 left-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-primary  to-transparent "></div>
                 </div>
               ))}
           </div>

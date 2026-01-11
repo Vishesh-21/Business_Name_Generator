@@ -58,8 +58,8 @@ export default function Page() {
                   >
                     <Trash2 className="h-4 w-4 text-destructive" />
                   </Button>
-                  <div className="absolute h-[0.8px] top-0 left-0 w-1/2 bg-gradient-to-r from-transparent via-muted-foreground to-transparent"></div>
-                  <div className="absolute h-[0.5px] bottom-0 right-0 w-1/2 bg-gradient-to-r from-transparent via-muted-foreground to-transparent"></div>
+                  <div className="absolute h-[0.8px] top-0 left-0 w-1/2 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+                  <div className="absolute h-[0.5px] bottom-0 right-0 w-1/2 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
                 </li>
               ))}
             </div>
